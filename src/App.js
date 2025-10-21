@@ -5,6 +5,8 @@ import WhiteHatStats from './WhiteHatStats'
 import Blackhat from './Blackhat';
 import BlackHatStats from './BlackHatStats';
 import * as d3 from 'd3';
+import View3 from "./view3";
+
 
 
 function App() {
@@ -152,9 +154,21 @@ function App() {
     if(viewToggle === 'whitehat'){
       return makeWhiteHat();
     }
-    else{
-      return makeBlackHat();
-    }
+    else if (viewToggle === 'blackhat') {
+    return makeBlackHat();
+  } 
+    else if (viewToggle === 'about') {
+    return (
+      <div style={{ padding: '1rem' }}>
+        <h1 style={{ fontFamily: 'Georgia' }}>Visual Analytics for Cancer Nutrition Website Data</h1>
+        <View3 />
+      </div>
+    );
+  } 
+    else {
+  
+    return makeBlackHat();
+  }
   }
 
   return (
@@ -172,11 +186,19 @@ function App() {
          className={viewToggle === 'blackhat'? 'inactiveButton':'activeButton'}
          >{"Black Hat"}
         </button>
+        {/* third toggle button */}
+        <button
+          onClick={() => setViewToggle('about')}
+          className={viewToggle === 'about' ? 'inactiveButton' : 'activeButton'}
+        >
+          {"About / Team"}
+        </button>
       </div>
       <div className={'body'} 
         style={{'height':'calc(100vh - 2.5em)','width':'100vw'}}
         >
         {hat()}
+
       </div>
     </div>
   );
