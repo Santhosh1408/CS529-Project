@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/CS529_Project_Beta_Version/static/css/main.2f505871.css",
+    "main.js": "/CS529_Project_Beta_Version/static/js/main.5da0c587.js",
+    "index.html": "/CS529_Project_Beta_Version/index.html",
+    "main.2f505871.css.map": "/CS529_Project_Beta_Version/static/css/main.2f505871.css.map",
+    "main.5da0c587.js.map": "/CS529_Project_Beta_Version/static/js/main.5da0c587.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2f505871.css",
+    "static/js/main.5da0c587.js"
+  ]
+}
