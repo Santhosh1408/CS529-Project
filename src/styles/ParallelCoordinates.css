@@ -1,0 +1,38 @@
+/* Parallel Coordinates Container */
+.parallel-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #fafafa;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.parallel-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.parallel-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #999;
+  font-size: 14px;
+}
+
+.axis .domain {
+  stroke: #999;
+  stroke-width: 2;
+}
+
+.axis line {
+  stroke: #ccc;
+}
+
+.axis text {
+  fill: #666;
+  font-size: 10px;
+}

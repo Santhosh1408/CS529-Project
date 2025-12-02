@@ -1,0 +1,68 @@
+/* Neighboring States Plot Container */
+.neighboring-states-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #fafafa;
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.neighboring-states-svg {
+  flex: 1;
+  display: block;
+  width: 100%;
+  min-height: 0;
+}
+
+/* Empty State */
+.neighboring-states-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #999;
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Tooltip */
+.neighboring-states-tooltip {
+  position: fixed;
+  display: none;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  color: #333;
+}
+
+.neighboring-states-tooltip div {
+  margin: 3px 0;
+  line-height: 1.4;
+}
+
+.neighboring-states-tooltip strong {
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* Axes Styling */
+.neighboring-states-svg .domain,
+.neighboring-states-svg .tick line {
+  stroke: #ccc;
+}
+
+.neighboring-states-svg .tick text {
+  fill: #555;
+  font-size: 11px;
+}
