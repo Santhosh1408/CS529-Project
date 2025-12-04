@@ -34,17 +34,42 @@ function MetricCard({ label, value, color }) {
     <div
       style={{
         background: "#fff",
-        padding: "5px",
-        borderRadius: "8px",
+        padding: "clamp(4px, 1%, 8px)",
+        borderRadius: "4px",
         border: "1px solid #e5e7eb",
         textAlign: "center",
+        flex: "1 1 auto",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        minHeight: "0",
+        overflow: "hidden",
       }}
     >
-      <div style={{ fontSize: "9px", color: "#6b7280" }}>{label}</div>
-      <div style={{ fontSize: "16px", fontWeight: 700, color }}>
+      <div style={{ 
+        fontSize: "0.55em", 
+        color: "#6b7280", 
+        marginBottom: "0.15em",
+        lineHeight: "1.2" 
+      }}>
+        {label}
+      </div>
+      <div style={{ 
+        fontSize: "1.1em", 
+        fontWeight: 700, 
+        color, 
+        lineHeight: "1.1" 
+      }}>
         {value != null && !isNaN(value) ? value.toFixed(1) : "N/A"}
       </div>
-      <div style={{ fontSize: "8px", color: "#9ca3af" }}>out of 100</div>
+      <div style={{ 
+        fontSize: "0.45em", 
+        color: "#9ca3af", 
+        marginTop: "0.1em",
+        lineHeight: "1.2" 
+      }}>
+        / 100
+      </div>
     </div>
   );
 }
@@ -91,6 +116,7 @@ const USChoropleth = ({ data, selectedState, onStateClick }) => {
       .style("boxShadow", "0 4px 10px rgba(0,0,0,0.15)")
       .style("fontSize", "11px")
       .style("opacity", 0)
+      .style("display", "none")
       .style("zIndex", 2000);
 
     d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json")
@@ -170,6 +196,9 @@ const USChoropleth = ({ data, selectedState, onStateClick }) => {
 
           .on("click", (event, d) => {
             event.stopPropagation();
+            tooltip
+              .style("opacity", 0)
+              .style("display", "none");
             const abbr = fipsToAbbr[d.id];
             onStateClick(abbr === selectedState ? null : abbr);
           })
@@ -177,7 +206,9 @@ const USChoropleth = ({ data, selectedState, onStateClick }) => {
 
           .on("mousemove", (event, d) => {
             if (selectedState) {
-              tooltip.style("opacity", 0);
+              tooltip
+                .style("opacity", 0)
+                .style("display", "none");
               return;
             }
 
@@ -187,6 +218,7 @@ const USChoropleth = ({ data, selectedState, onStateClick }) => {
             const n = patientsByAbbr.get(abbr);
 
             tooltip
+              .style("display", "block")
               .style("opacity", 1)
               .style("left", event.pageX + 12 + "px")
               .style("top", event.pageY + 12 + "px")
@@ -198,7 +230,9 @@ const USChoropleth = ({ data, selectedState, onStateClick }) => {
           })
 
           .on("mouseleave", () => {
-            if (!selectedState) tooltip.style("opacity", 0);
+            tooltip
+              .style("opacity", 0)
+              .style("display", "none");
           });
 
         setLoading(false);
@@ -252,8 +286,8 @@ const USChoropleth = ({ data, selectedState, onStateClick }) => {
         style={{
           width: "100%",
           height: "100%",
-          transform: "translateX(-50px)",
         }}
+        preserveAspectRatio="xMidYMid meet"
       />
 
       {/* Tooltip */}
@@ -269,6 +303,7 @@ const USChoropleth = ({ data, selectedState, onStateClick }) => {
             fontSize: "10px",
             textAlign: "center",
             zIndex: 1000,
+            pointerEvents: "none",
           }}
         >
           <div>Higher</div>
@@ -291,28 +326,47 @@ const USChoropleth = ({ data, selectedState, onStateClick }) => {
         <div
           style={{
             position: "absolute",
-            top: "-18px",
-            right: "20px",
-            width: "160px",
+            top: "2%",
+            right: "2%",
+            width: "min(160px, 15%)",
+            maxHeight: "96%",
             background: "#fff",
-            padding: "4px",
-            borderRadius: "5px",
+            padding: "8px",
+            borderRadius: "6px",
             border: "1px solid #e5e7eb",
             boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
             display: "flex",
             flexDirection: "column",
-            gap: "4px",
+            gap: "6px",
             zIndex: 1500,
+            pointerEvents: "none",
           }}
         >
-          <div style={{ fontSize: "12px", fontWeight: 600, marginBottom: "4px" }}>
+          <div style={{ 
+            fontSize: "0.7em", 
+            fontWeight: 600, 
+            marginBottom: "0.3em",
+            paddingBottom: "0.3em",
+            borderBottom: "1px solid #e5e7eb",
+            flexShrink: 0,
+            pointerEvents: "auto",
+            lineHeight: "1.2",
+          }}>
             {stateAbbrToName[selectedState]} ({selectedState})
           </div>
 
-          <MetricCard label="Lifestyle" value={selected.lifestyle} color="#3b82f6" />
-          <MetricCard label="Diet" value={selected.diet} color="#10b981" />
-          <MetricCard label="Activity" value={selected.pa} color="#f59e0b" />
-          <MetricCard label="BMI" value={selected.bmi} color="#ef4444" />
+          <div style={{ 
+            display: "flex", 
+            flexDirection: "column", 
+            gap: "6px", 
+            flex: 1,
+            pointerEvents: "auto",
+          }}>
+            <MetricCard label="Lifestyle" value={selected.lifestyle} color="#3b82f6" />
+            <MetricCard label="Diet" value={selected.diet} color="#10b981" />
+            <MetricCard label="Activity" value={selected.pa} color="#f59e0b" />
+            <MetricCard label="BMI" value={selected.bmi} color="#ef4444" />
+          </div>
         </div>
       )}
     </div>

@@ -99,18 +99,26 @@ const SankeyDiagram = ({ data, selectedState, onNodeClick, selectedFilter }) => 
     });
 
     const getNodeColor = nodeName => {
-      if (nodeName === 'Low Fiber') return '#CC3311';
-      if (nodeName === 'Med Fiber') return '#EE7733';
-      if (nodeName === 'High Fiber') return '#009988';
-      if (nodeName === 'Low Sugar') return '#009988';
-      if (nodeName === 'Med Sugar') return '#EE7733';
-      if (nodeName === 'High Sugar') return '#CC3311';
-      if (nodeName === 'Underweight') return '#0077BB';
-      if (nodeName === 'Healthy') return '#009988';
-      if (nodeName === 'Overweight') return '#EE7733';
-      if (nodeName === 'Obese') return '#CC3311';
-      return '#0077BB';
-    };
+  // Paul Tol's colorblind-safe palette
+  
+  // Fiber groups
+  if (nodeName === 'Low Fiber') return '#EE3377';    
+  if (nodeName === 'Med Fiber') return '#CCBB44';    
+  if (nodeName === 'High Fiber') return '#228833';   
+  
+  // Sugar groups  
+  if (nodeName === 'Low Sugar') return '#228833';    
+  if (nodeName === 'Med Sugar') return '#CCBB44';    
+  if (nodeName === 'High Sugar') return '#EE3377';   
+  
+  // BMI groups
+  if (nodeName === 'Underweight') return '#4477AA';  
+  if (nodeName === 'Healthy') return '#228833';      
+  if (nodeName === 'Overweight') return '#CCBB44';   
+  if (nodeName === 'Obese') return '#EE3377';        
+  
+  return '#BBBBBB';  // Gray fallback
+};
 
     svg.append('g')
       .attr('fill', 'none')

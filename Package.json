@@ -2,7 +2,7 @@
   "name": "cancer-nutrition-dashboard",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://HetNagda20.github.io/CS529_Project_Beta_Version",
+  "homepage": "https://santhosh1408.github.io/CS529-Project/",
   "dependencies": {
     "d3": "^7.8.5",
     "d3-sankey": "^0.12.3",

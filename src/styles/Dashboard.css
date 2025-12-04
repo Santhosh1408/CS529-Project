@@ -25,40 +25,42 @@ html, body {
   flex-direction: column;
   height: 100vh;
   width: 100%;
-  padding: 15px;
+  max-width: 2560px;
+  margin: 0 auto;
+  padding: 10px;
   overflow: hidden;
 }
 
 /* Header */
 .header {
   text-align: center;
-  padding: 10px 0;
+  padding: 6px 0;
   border-bottom: 1px solid #e0e0e0;
   flex-shrink: 0;
 }
 
 .header h1 {
-  font-size: 24px;
+  font-size: clamp(20px, 1.5vw, 26px);
   font-weight: 600;
   color: #2c3e50;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .header p {
-  font-size: 13px;
+  font-size: clamp(12px, 0.9vw, 15px);
   color: #7f8c8d;
 }
 
 /* Filter Panel */
 .filter-panel {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   align-items: flex-end;
-  padding: 12px 15px;
+  padding: 8px 12px;
   background: #f8f9fa;
   border: 1px solid #e0e0e0;
   border-radius: 4px;
-  margin: 10px 0;
+  margin: 8px 0;
   flex-wrap: wrap;
   flex-shrink: 0;
 }
@@ -66,11 +68,11 @@ html, body {
 .filter-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 .filter-group label {
-  font-size: 13px;
+  font-size: clamp(12px, 0.9vw, 14px);
   font-weight: 500;
   color: #555;
 }
@@ -82,11 +84,11 @@ html, body {
 }
 
 .range-inputs input {
-  width: 70px;
-  padding: 6px 10px;
+  width: clamp(65px, 5vw, 80px);
+  padding: 5px 8px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  font-size: 13px;
+  font-size: clamp(12px, 0.9vw, 14px);
 }
 
 .range-inputs span {
@@ -95,23 +97,24 @@ html, body {
 }
 
 .filter-group select {
-  padding: 6px 12px;
+  padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  font-size: 13px;
+  font-size: clamp(12px, 0.9vw, 14px);
   background: white;
   cursor: pointer;
 }
 
 .reset-btn {
-  padding: 8px 16px;
+  padding: 6px 14px;
   background: #3498db;
   color: white;
   border: none;
   border-radius: 3px;
-  font-size: 13px;
+  font-size: clamp(12px, 0.9vw, 14px);
   cursor: pointer;
   transition: background 0.2s;
+  white-space: nowrap;
 }
 
 .reset-btn:hover {
@@ -123,7 +126,7 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 15px;
+  gap: 10px;
   flex: 1;
   overflow: hidden;
   min-height: 0;
@@ -134,7 +137,7 @@ html, body {
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 4px;
-  padding: 15px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.2s;
@@ -147,20 +150,20 @@ html, body {
 }
 
 .chart-container h3 {
-  font-size: 15px;
+  font-size: clamp(14px, 1vw, 18px);
   font-weight: 600;
   color: #2c3e50;
-  margin-bottom: 10px;
-  padding-bottom: 8px;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
   border-bottom: 1px solid #ecf0f1;
   flex-shrink: 0;
 }
 
 .chart-instruction {
-  font-size: 12px;
+  font-size: clamp(11px, 0.8vw, 13px);
   color: #7f8c8d;
   font-style: italic;
-  margin: -5px 0 10px 0;
+  margin: -3px 0 6px 0;
   flex-shrink: 0;
 }
 
@@ -301,17 +304,17 @@ html, body {
 .view-toggle button {
   position: relative;
   z-index: 1;
-  padding: 8px 24px;
+  padding: clamp(5px, 0.6vw, 8px) clamp(16px, 2vw, 24px);
   border: none;
   border-radius: 20px;
   background: transparent;
   color: #666;
-  font-size: 13px;
+  font-size: clamp(11px, 1.1vw, 13px);
   font-weight: 600;
   cursor: pointer;
   transition: color 0.3s ease, transform 0.1s ease;
   white-space: nowrap;
-  min-width: 100px;
+  min-width: clamp(80px, 8vw, 100px);
 }
 
 .view-toggle button:hover {
@@ -335,13 +338,13 @@ html, body {
 .patient-search-box {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: #f5f5f5;
-  padding: 8px 16px;
+  padding: 6px 14px;
   border-radius: 25px;
   border: 2px solid #3498db;
   transition: all 0.3s ease;
-  min-width: 220px;
+  min-width: clamp(180px, 18vw, 220px);
 }
 
 .patient-search-box:focus-within {
@@ -350,7 +353,7 @@ html, body {
 }
 
 .patient-search-box .search-icon {
-  font-size: 18px;
+  font-size: clamp(14px, 1.4vw, 18px);
   color: #333;
   display: flex;
   align-items: center;
@@ -385,7 +388,7 @@ html, body {
   flex: 1;
   border: none;
   background: transparent;
-  font-size: 14px;
+  font-size: clamp(12px, 1.2vw, 14px);
   outline: none;
   color: #333;
   font-weight: 500;
